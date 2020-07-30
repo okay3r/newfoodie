@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>top.okay3r</groupId>
-            <artifactId>newfoodie-dao</artifactId>
+            <artifactId>newfoodie-biz</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
