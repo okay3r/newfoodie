@@ -8,20 +8,20 @@ import top.newfoodie.domain.base.BaseObject;
  */
 public class CommonResponse<T> extends BaseObject {
 
-    private Boolean success;
+    private Integer status;
+
+    private String msg;
 
     private HttpResponse error;
 
     private T data;
 
-    private Paging paging;
-
-    public Boolean getSuccess() {
-        return success;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public HttpResponse getError() {
@@ -40,11 +40,11 @@ public class CommonResponse<T> extends BaseObject {
         this.data = data;
     }
 
-    public Paging getPaging() {
-        return paging;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setPaging(Paging paging) {
-        this.paging = paging;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

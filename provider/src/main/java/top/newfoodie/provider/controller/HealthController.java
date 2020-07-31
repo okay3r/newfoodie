@@ -36,7 +36,8 @@ public class HealthController {
     @RequestMapping(value = "/check", method = RequestMethod.GET)
     public CommonResponse checkHealth() {
         LOGGER.info("new-foodie check health!");
-        throw new FoodieCoreException(FoodieCodesEnum.INTERNAL_ERROR);
+        // throw new FoodieCoreException(FoodieCodesEnum.INTERNAL_ERROR);
+        throw new FoodieCoreException(1234, "hello~~");
     }
 
     @ApiOperation(value = "查询用户", httpMethod = "GET")

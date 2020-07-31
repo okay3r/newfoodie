@@ -1,5 +1,7 @@
 package top.newfoodie.common.api;
 
+import org.springframework.http.HttpStatus;
+
 /**
  * @author: wangdarui
  * @date: 2020/8/1
@@ -7,22 +9,17 @@ package top.newfoodie.common.api;
 public class ResponseFactory {
     public static <T> CommonResponse<T> buildCommonResponse() {
         CommonResponse commonResponse = new CommonResponse();
-        commonResponse.setSuccess(true);
+        commonResponse.setStatus(HttpStatus.OK.value());
+        commonResponse.setMsg("OK");
         return commonResponse;
     }
 
     public static <T> CommonResponse<T> buildCommonResponse(T data) {
         CommonResponse commonResponse = new CommonResponse();
-        commonResponse.setSuccess(true);
+        commonResponse.setStatus(HttpStatus.OK.value());
         commonResponse.setData(data);
+        commonResponse.setMsg("OK");
         return commonResponse;
     }
 
-    public static <T> CommonResponse<T> buildCommonResponse(T data, Paging paging) {
-        CommonResponse commonResponse = new CommonResponse();
-        commonResponse.setSuccess(true);
-        commonResponse.setData(data);
-        commonResponse.setPaging(paging);
-        return commonResponse;
-    }
 }

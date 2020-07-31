@@ -9,6 +9,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 import org.springframework.validation.BindingResult;
@@ -129,18 +130,20 @@ public class ControllerAdvice implements Ordered {
             CommonResponse response = (CommonResponse) ret;
             if (null != exception && exception instanceof FoodieException) {
                 FoodieException ve = (FoodieException) exception;
-                response.setSuccess(false);
+                response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
                 HttpResponse error = new HttpResponse();
                 error.setCode(ve.getCode());
                 error.setMessage(ve.getMessage());
                 response.setError(error);
+                response.setMsg(error.getMessage());
                 return;
             }
-            response.setSuccess(false);
+            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             HttpResponse error = new HttpResponse();
             error.setCode(FoodieCodesEnum.INTERNAL_ERROR.getCode());
             error.setMessage(FoodieCodesEnum.INTERNAL_ERROR.getMessage());
             response.setError(error);
+            response.setMsg(error.getMessage());
         }
     }
 }
